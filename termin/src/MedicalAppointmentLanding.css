@@ -1,0 +1,177 @@
+.landing-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f9fafb;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.section-container {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+
+.section-padding {
+  padding: 64px 16px;
+}
+
+.hero-section {
+  width: 100%;
+  background-color: #2563eb;
+  color: white;
+  padding: 80px 16px;
+  text-align: center;
+  display: block;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: bold;
+  margin: 0 0 24px 0;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  margin: 0 auto 32px auto;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+.btn-primary {
+  background-color: white;
+  color: #2563eb;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #f8fafc;
+}
+
+.btn-cta {
+  background-color: white;
+  color: #2563eb;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-cta:hover {
+  background-color: #f8fafc;
+}
+
+.benefits-section {
+  background-color: white;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 48px 0;
+  color: #1f2937;
+}
+
+.benefits-list {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  margin: 0 0 24px 0;
+}
+
+.benefit-icon {
+  width: 24px;
+  height: 24px;
+  background-color: #2563eb;
+  border-radius: 50%;
+  margin-right: 16px;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.benefit-content {
+  flex: 1;
+}
+
+.benefit-title {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 4px;
+  margin: 0 0 4px 0;
+}
+
+.benefit-text {
+  color: #6b7280;
+  margin: 0;
+}
+
+.testimonial-section {
+  background-color: #f3f4f6;
+}
+
+.testimonial-card {
+  background-color: #2563eb;
+  color: white;
+  padding: 32px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.testimonial-quote {
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 16px;
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+}
+
+.testimonial-cite {
+  color: #bfdbfe;
+  font-style: normal;
+}
+
+.cta-section {
+  background-color: #2563eb;
+  color: white;
+  text-align: center;
+  display: block;
+}
+
+.cta-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 32px 0;
+}
+
+.footer {
+  background-color: #1f2937;
+  color: white;
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.footer-text {
+  margin: 0;
+}
