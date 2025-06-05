@@ -6,7 +6,6 @@ const AnimatedButton = ({
   variant = 'primary', 
   onClick, 
   disabled = false,
-  loading = false,
   className = '',
   showIcon = false,
   autoPulse = false,
@@ -15,7 +14,6 @@ const AnimatedButton = ({
 }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [ripples, setRipples] = useState([]);
-  const [buttonState, setButtonState] = useState('idle'); 
 
   useEffect(() => {
     if (autoPulse && variant === 'cta') {
@@ -28,8 +26,9 @@ const AnimatedButton = ({
   }, [autoPulse, variant]);
 
   const handleClick = (e) => {
-    if (disabled || loading) return;
+    if (disabled) return;
 
+    // Create ripple effect
     const rect = e.currentTarget.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height);
     const x = e.clientX - rect.left - size / 2;
@@ -48,14 +47,16 @@ const AnimatedButton = ({
       setRipples(prev => prev.filter(ripple => ripple.id !== newRipple.id));
     }, 600);
 
+    // Brief visual feedback before redirect
+    setIsClicked(true);
+    setTimeout(() => setIsClicked(false), 200);
+
+    // Call the onClick handler (which should handle the redirect)
     if (onClick) {
-      setButtonState('loading');
+      // Small delay to show the click animation before redirect
       setTimeout(() => {
-        setButtonState('success');
-        setTimeout(() => setButtonState('idle'), 1500);
-      }, 1000);
-      
-      onClick(e);
+        onClick(e);
+      }, 150);
     }
   };
 
@@ -63,8 +64,6 @@ const AnimatedButton = ({
     'animated-button',
     variant === 'primary' ? 'btn-animated-primary' : 'btn-animated-cta',
     isClicked ? 'pulse' : '',
-    buttonState === 'loading' ? 'loading' : '',
-    buttonState === 'success' ? 'success' : '',
     className
   ].filter(Boolean).join(' ');
 
@@ -78,7 +77,7 @@ const AnimatedButton = ({
     <button
       className={baseClasses}
       onClick={handleClick}
-      disabled={disabled || loading}
+      disabled={disabled}
       style={buttonStyle}
       {...props}
     >
@@ -95,21 +94,13 @@ const AnimatedButton = ({
         />
       ))}
 
-      {buttonState === 'loading' ? (
-        <span>Wird geladen...</span>
-      ) : buttonState === 'success' ? (
-        <span>Erfolgreich!</span>
-      ) : (
-        <>
-          {children}
-          {showIcon && (
-            <span className="button-icon">
-              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </span>
-          )}
-        </>
+      {children}
+      {showIcon && (
+        <span className="button-icon">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </span>
       )}
     </button>
   );
@@ -127,7 +118,7 @@ export const AnimatedCTAButton = ({ children, ...props }) => (
   <AnimatedButton 
     variant="cta" 
     showIcon={true} 
-    autoPulse={true}
+    autoPulse={false}
     {...props}
   >
     {children}
@@ -144,12 +135,12 @@ export const AnimatedButtonSection = ({
   variant = 'hero' 
 }) => {
   const handlePrimaryClick = () => {
-    console.log('Primary button clicked');
+    console.log('Primary button clicked - redirecting...');
     if (onPrimaryClick) onPrimaryClick();
   };
 
   const handleCTAClick = () => {
-    console.log('CTA button clicked');
+    console.log('CTA button clicked - redirecting...');
     if (onCTAClick) onCTAClick();
   };
 

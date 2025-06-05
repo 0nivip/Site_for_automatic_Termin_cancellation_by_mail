@@ -35,7 +35,6 @@ const AnimatedStepsSection = () => {
         </svg>
       ),
       title: "E-Mail Absage",
-      content: ["Eine Absage per E-Mail kommt rein"],
       summary: "1. Eine Absage per E-Mail kommt rein",
       showExample: true
     },
@@ -47,12 +46,10 @@ const AnimatedStepsSection = () => {
         </svg>
       ),
       title: "Automatische Erkennung",
-      content: [
-        "Unser Tool erkennt automatisch – und",
-        "löscht den Termin aus Doctolib oder samedi"
-      ],
-      summary: "2. Unser Tool erkennt sie automatisch – und löscht den Termin in Doctolib oder samedi"
+      summary: "2. Unser Tool erkennt sie automatisch – und löscht den Termin in Doctolib oder samedi",
+      showProgress: true
     },
+    
     {
       icon: (
         <svg width="40" height="40" fill="none" stroke="#2563eb" viewBox="0 0 24 24">
@@ -61,11 +58,8 @@ const AnimatedStepsSection = () => {
         </svg>
       ),
       title: "Stressfrei",
-      content: [
-        "Der Kalender ist aktuell. Kein",
-        "Klick, kein Stress"
-      ],
-      summary: "3. Der Kalender ist aktuell. Kein Klick, kein Stress"
+      summary: "3. Der Kalender ist aktuell. Kein Klick, kein Stress",
+      showSuccess: true
     }
   ];
 
@@ -93,11 +87,12 @@ const StepCard = ({
   index, 
   icon, 
   title, 
-  content, 
   summary, 
   delay, 
   isVisible, 
-  showExample = false 
+  showExample = false,
+  showProgress = false,
+  showSuccess = false
 }) => {
   const [showGlow, setShowGlow] = useState(false);
 
@@ -136,22 +131,31 @@ const StepCard = ({
       <h3 className="step-title">{title}</h3>
 
       <div className="step-content">
-        {content.map((item, i) => (
-          <div
-            key={i}
-            className="step-item"
-            style={{ animationDelay: `${delay + 400 + (i * 100)}ms` }}
-          >
-            <span className="bullet"></span>
-            <span>{item}</span>
-          </div>
-        ))}
-        
         {showExample && (
           <div className="step-example">
             <div className="email-preview">
               <div className="email-icon">📧</div>
-              <span className="email-text">Guten Tag...</span>
+              <span className="email-text">Hallo, ich möchte meinen Termin absagen</span>
+            </div>
+          </div>
+        )}
+        
+        {showProgress && (
+          <div className="step-example">
+            <div className="progress-indicator">
+              <div className="progress-bar">
+                <div className="progress-fill"></div>
+              </div>
+              <span className="progress-text">Verarbeitung läuft...</span>
+            </div>
+          </div>
+        )}
+        
+        {showSuccess && (
+          <div className="step-example">
+            <div className="success-indicator">
+              <div className="checkmark">✓</div>
+              <span className="success-text">Termin erfolgreich gelöscht</span>
             </div>
           </div>
         )}

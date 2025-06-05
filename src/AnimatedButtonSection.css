@@ -41,11 +41,32 @@
   font-size: 18px;
   padding: 20px 40px;
   box-shadow: 0 8px 25px -5px rgba(16, 185, 129, 0.3);
+  animation: bounceIn 0.8s ease-out both;
 }
 
 .btn-animated-cta:hover {
   background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  box-shadow: 0 12px 30px -5px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.5);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.btn-animated-cta.pulse {
+  animation: ctaPulseEffect 0.4s ease-out;
+}
+
+@keyframes ctaPulseEffect {
+  0% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 8px 25px -5px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    transform: scale(1.08) translateY(-4px);
+    box-shadow: 0 20px 40px -5px rgba(16, 185, 129, 0.6);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 8px 25px -5px rgba(16, 185, 129, 0.3);
+  }
 }
 
 .animated-button.pulse {
@@ -61,55 +82,6 @@
   }
   100% {
     transform: scale(1) translateY(0);
-  }
-}
-
-.animated-button.loading {
-  cursor: not-allowed;
-  opacity: 0.8;
-}
-
-.animated-button.loading::after {
-  content: '';
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  border: 2px solid transparent;
-  border-top: 2px solid currentColor;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: translateY(-50%) rotate(0deg); }
-  100% { transform: translateY(-50%) rotate(360deg); }
-}
-
-.animated-button.success {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-}
-
-.animated-button.success::after {
-  content: '✓';
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-weight: bold;
-  animation: checkmark 0.3s ease-in;
-}
-
-@keyframes checkmark {
-  0% {
-    opacity: 0;
-    transform: translateY(-50%) scale(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
   }
 }
 
@@ -138,6 +110,24 @@
 
 .animated-button:hover .button-icon {
   transform: translateX(4px);
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-10px) scale(1.1);
+  }
+  70% {
+    transform: translateY(5px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes slideInUp {
