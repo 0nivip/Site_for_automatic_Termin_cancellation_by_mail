@@ -3,29 +3,38 @@ import AnimatedStepsSection from './AnimatedStepsSection';
 import { AnimatedButtonSection } from './AnimatedButtonSection';
 import './MedicalAppointmentLanding.css';
 
+
 const MedicalAppointmentLanding = () => {
   const benefits = [
     {
-      title: "Zeitersparnis:",
-      text: "Bis zu 3 Stunden pro Woche gespart"
+      title: "Maximale Zeitersparnis",
+      text: "Sparen Sie bis zu 3 Stunden pro Woche durch vollautomatische Terminverwaltung. Keine manuellen Löschungen mehr – unser System erkennt Absagen sofort und aktualisiert Ihren Kalender in Echtzeit.",
+      icon: "⏱️"
     },
     {
-      title: "DSGVO-konform:",
-      text: "Lokale Verarbeitung oder sichere Cloud"
+      title: "100% DSGVO-konform",
+      text: "Ihre Patientendaten bleiben sicher. Wahlweise lokale Verarbeitung oder sichere Cloud-Lösung mit deutschen Servern. Alle Datenschutzbestimmungen werden strikt eingehalten.",
+      icon: "🔒"
     },
     {
-      title: "Keine Schulung nötig:",
-      text: "Läuft im Hintergrund"
+      title: "Plug & Play Installation",
+      text: "Keine Schulungen, keine komplizierte Einrichtung. Das System läuft vollautomatisch im Hintergrund und integriert sich nahtlos in Ihren bestehenden Workflow.",
+      icon: "⚡"
     },
     {
-      title: "Kompatibel:",
-      text: "Doctolib, samedi"
+      title: "Universelle Kompatibilität",
+      text: "Funktioniert perfekt mit Doctolib, samedi und anderen gängigen Praxismanagementsystemen. Einfache Integration ohne Systemwechsel erforderlich.",
+      icon: "🔗"
     },
     {
-      title: "Akzeptierte E-Mails:",
-      text: "Fast alles"
+      title: "Intelligente E-Mail-Erkennung",
+      text: "Erkennt Terminabsagen in fast allen E-Mail-Formaten und Sprachen. Selbst informelle Nachrichten wie 'kann heute nicht kommen' werden zuverlässig verarbeitet.",
+      icon: "🧠"
     }
   ];
+  
+
+
 
   const handlePrimaryClick = () => {
     console.log('Demo anfragen clicked');
@@ -68,10 +77,25 @@ const BenefitsSection = ({ benefits }) => (
   <section className="benefits-section section-padding">
     <div className="section-container">
       <h2 className="section-title">Vorteile</h2>
-      <div className="benefits-list">
-        {benefits.map((benefit, index) => (
-          <BenefitItem key={index} {...benefit} />
-        ))}
+      <div className="benefits-grid">
+        <div className="benefits-list">
+          {benefits.map((benefit, index) => (
+            <BenefitItem key={index} {...benefit} />
+          ))}
+        </div>
+        <div className="feature-card">
+          <div className="feature-card-content">
+            <h3 className="feature-title">Ärzte stimmen zu</h3>
+            <div className="image-container">
+              <img
+                src={require("./Photo.png")}
+
+                width="100%"
+                alt="Ich weis nicht, was ist die Fehler"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

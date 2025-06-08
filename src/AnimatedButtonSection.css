@@ -166,7 +166,6 @@
   outline-color: #10b981;
 }
 
-/* Disabled state */
 .animated-button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
@@ -176,4 +175,21 @@
 .animated-button:disabled:hover {
   transform: none;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
+@media (max-width: 968px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .step-card {
+    width: 100%;
+    max-width: 400px;
+  }
 }
