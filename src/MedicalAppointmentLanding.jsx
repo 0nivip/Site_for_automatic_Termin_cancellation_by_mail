@@ -49,7 +49,6 @@ const MedicalAppointmentLanding = () => {
       <HeroSection onPrimaryClick={handlePrimaryClick} />
       <AnimatedStepsSection />
       <BenefitsSection benefits={benefits} />
-      <TestimonialSection />
       <CTASection onCTAClick={handleCTAClick} />
     </div>
   );
@@ -84,15 +83,23 @@ const BenefitsSection = ({ benefits }) => (
           ))}
         </div>
         <div className="feature-card">
-          <div className="feature-card-content">
-            <h3 className="feature-title">Ärzte stimmen zu</h3>
-            <div className="image-container">
-              <img
-                src={require("./Photo.png")}
-
-                width="100%"
-                alt="Ich weis nicht, was ist die Fehler"
-              />
+          <div className="card-inner">
+            <div className="card-front">
+              <div className="feature-card-content">
+                <h3 className="feature-title">Ärzte stimmen zu</h3>
+                <div className="feature-image">
+                  <img
+                    src={require("./Photo.png")}
+                    alt="Arzt Portrait"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="card-back">
+              <blockquote className="testimonial-quote">
+                Wir haben weniger Chaos, weniger verpasste Absagen, und der Kalender ist endlich zuverlässig.
+              </blockquote>
+              <cite className="testimonial-cite">— Dr. H. Möller, Dermatologie Berlin</cite>
             </div>
           </div>
         </div>
@@ -111,18 +118,6 @@ const BenefitItem = ({ title, text }) => (
   </div>
 );
 
-const TestimonialSection = () => (
-  <section className="testimonial-section section-padding">
-    <div className="section-container">
-      <div className="testimonial-card">
-        <blockquote className="testimonial-quote">
-          "Wir haben weniger Chaos, weniger verpasste Absagen, und der Kalender ist endlich zuverlässig."
-        </blockquote>
-        <cite className="testimonial-cite">— Dr. H. Möller, Dermatologie Berlin</cite>
-      </div>
-    </div>
-  </section>
-);
 
 const CTASection = ({ onCTAClick }) => (
   <section className="cta-section section-padding">
